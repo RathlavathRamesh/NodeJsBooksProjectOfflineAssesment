@@ -1,0 +1,156 @@
+🧬 Database Setup
+Ensure MongoDB is installed and running locally.
+
+The database (bookdb) and collection will be created automatically when you run the app and add data.
+
+🧪 API Documentation
+1. GET /books
+Fetch all books with optional query parameters:
+
+status (string): filter by book status (unread, reading, read)
+
+sort (string): sort by any field (e.g., title)
+
+page (number): page number (default 1)
+
+limit (number): results per page (default 10)
+
+search (string): search by book title (case-insensitive)
+
+Example request:
+GET http://localhost:5000/books?status=reading&sort=title&page=1&limit=5&search=harry
+
+2. POST /books
+Add a new book.
+
+Required fields: title, author, status (must be one of unread, reading, read)
+
+Example JSON body:
+
+json
+Copy
+Edit
+{
+  "title": "The Hobbit",
+  "author": "J.R.R. Tolkien",
+  "genre": "Fantasy",
+  "publishedYear": 1937,
+  "status": "unread"
+}
+3. GET /books/:id
+Get a book by its ID.
+
+⚠️ Error Handling
+Returns 400 if required fields are missing in POST request.
+
+Returns 404 if book with the given ID is not found.
+
+Returns 500 for server errors.
+
+✅ Test Cases
+Method	Endpoint	Description	Expected Result
+GET	/books	Get all books	200 OK + list of books
+POST	/books	Add a new book	201 Created + book
+GET	/books/:id	Get book by ID	200 OK + book or 404
+
+You can paste this as-is into your README or editor, and it will format properly as markdown or plain text.
+
+If you want the complete index.js example or anything else, just ask!
+
+
+
+
+
+
+
+You said:
+not individually i want all of them in a single Editor
+
+
+ChatGPT said:
+Got it! Here is the entire documentation combined into a single text block without any code block fences or breaks, so you can copy-paste everything at once directly into a single editor window or your README.md:
+
+Book API
+A simple Node.js + Express REST API to manage books using MongoDB and Mongoose.
+
+Tech Stack:
+
+Node.js
+
+Express
+
+MongoDB with Mongoose
+
+Postman for API testing
+
+Getting Started:
+
+Clone the repository
+git clone https://github.com/your-username/book-api.git
+cd book-api
+
+Install dependencies
+npm install
+
+Environment variables
+Create a .env file with the following content:
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/bookdb
+
+Run the app
+node index.js
+
+Database Setup:
+
+Ensure MongoDB is installed and running locally.
+
+The database (bookdb) and collection will be created automatically when you run the app and add data.
+
+API Documentation:
+
+GET /books
+Fetch all books with optional query parameters:
+
+status (string): filter by book status (unread, reading, read)
+
+sort (string): sort by any field (e.g., title)
+
+page (number): page number (default 1)
+
+limit (number): results per page (default 10)
+
+search (string): search by book title (case-insensitive)
+
+Example request:
+GET http://localhost:5000/books?status=reading&sort=title&page=1&limit=5&search=harry
+
+POST /books
+Add a new book.
+Required fields: title, author, status (must be one of unread, reading, read)
+
+Example JSON body:
+{
+"title": "The Hobbit",
+"author": "J.R.R. Tolkien",
+"genre": "Fantasy",
+"publishedYear": 1937,
+"status": "unread"
+}
+
+GET /books/:id
+Get a book by its ID.
+
+Error Handling:
+
+Returns 400 if required fields are missing in POST request.
+
+Returns 404 if book with the given ID is not found.
+
+Returns 500 for server errors.
+
+Test Cases:
+
+Method	Endpoint	Description	Expected Result
+GET	/books	Get all books	200 OK + list of books
+POST	/books	Add a new book	201 Created + book
+GET	/books/:id	Get book by ID	200 OK + book or 404
